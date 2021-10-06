@@ -13,6 +13,8 @@
 		876CF078270D71A10017A98E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 876CF077270D71A10017A98E /* Preview Assets.xcassets */; };
 		876CF083270D71A10017A98E /* DNSRTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876CF082270D71A10017A98E /* DNSRTests.swift */; };
 		87CD5278270D806C00377214 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD5277270D806C00377214 /* State.swift */; };
+		87CD527A270DA0E100377214 /* App+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD5279270DA0E100377214 /* App+Request.swift */; };
+		87CD528F270DB5EA00377214 /* App+Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD528E270DB5EA00377214 /* App+Schedule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		876CF082270D71A10017A98E /* DNSRTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSRTests.swift; sourceTree = "<group>"; };
 		876CF084270D71A10017A98E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87CD5277270D806C00377214 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		87CD5279270DA0E100377214 /* App+Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App+Request.swift"; sourceTree = "<group>"; };
+		87CD528E270DB5EA00377214 /* App+Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App+Schedule.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,8 @@
 			isa = PBXGroup;
 			children = (
 				876CF070270D71A10017A98E /* App.swift */,
+				87CD528E270DB5EA00377214 /* App+Schedule.swift */,
+				87CD5279270DA0E100377214 /* App+Request.swift */,
 				876CF072270D71A10017A98E /* View.swift */,
 				87CD5277270D806C00377214 /* State.swift */,
 				876CF074270D71A10017A98E /* Assets.xcassets */,
@@ -203,8 +209,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87CD528F270DB5EA00377214 /* App+Schedule.swift in Sources */,
 				876CF073270D71A10017A98E /* View.swift in Sources */,
 				876CF071270D71A10017A98E /* App.swift in Sources */,
+				87CD527A270DA0E100377214 /* App+Request.swift in Sources */,
 				87CD5278270D806C00377214 /* State.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
