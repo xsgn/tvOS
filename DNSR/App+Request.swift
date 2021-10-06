@@ -7,6 +7,21 @@
 import Foundation
 import Combine
 extension App {
+	static var cancel: Set<AnyCancellable> = .init()
+	func update() {
+		request(host: state.getHost(), user: state.getUser(), pass: state.getPass()).sink(receiveCompletion: {
+			switch $0 {
+				case.finished:
+					break
+				case.failure(let error):
+					break
+			}
+		}, receiveValue: {
+			state.set(status: "LAST UPDATE: \(Date()), \($0)")
+		}).store(in: &type(of: self).cancel)
+	}
+}
+extension App {
 	func request(host: String, user: String, pass: String) -> AnyPublisher<String, URLSession.DataTaskPublisher.Failure> {
 		func parse(data: Data, response: URLResponse) -> Optional<String>.Publisher {
 			switch response {
