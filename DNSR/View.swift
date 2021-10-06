@@ -10,7 +10,7 @@ struct View: SwiftUI.View {
 	var body: some SwiftUI.View {
 		VStack {
 			TextField("USER", text: state.user)
-			TextField("PASS", text: state.pass)
+			SecureField("PASS", text: state.pass)
 		}.padding()
 	}
 }
