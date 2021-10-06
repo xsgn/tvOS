@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		876CF071270D71A10017A98E /* DNSRApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876CF070270D71A10017A98E /* DNSRApp.swift */; };
-		876CF073270D71A10017A98E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876CF072270D71A10017A98E /* ContentView.swift */; };
+		876CF071270D71A10017A98E /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876CF070270D71A10017A98E /* App.swift */; };
+		876CF073270D71A10017A98E /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876CF072270D71A10017A98E /* View.swift */; };
 		876CF075270D71A10017A98E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 876CF074270D71A10017A98E /* Assets.xcassets */; };
 		876CF078270D71A10017A98E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 876CF077270D71A10017A98E /* Preview Assets.xcassets */; };
 		876CF083270D71A10017A98E /* DNSRTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876CF082270D71A10017A98E /* DNSRTests.swift */; };
+		87CD5278270D806C00377214 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD5277270D806C00377214 /* State.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,14 +27,15 @@
 
 /* Begin PBXFileReference section */
 		876CF06D270D71A10017A98E /* DNSR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DNSR.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		876CF070270D71A10017A98E /* DNSRApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSRApp.swift; sourceTree = "<group>"; };
-		876CF072270D71A10017A98E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		876CF070270D71A10017A98E /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		876CF072270D71A10017A98E /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		876CF074270D71A10017A98E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		876CF077270D71A10017A98E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		876CF079270D71A10017A98E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		876CF07E270D71A10017A98E /* DNSRTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DNSRTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		876CF082270D71A10017A98E /* DNSRTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSRTests.swift; sourceTree = "<group>"; };
 		876CF084270D71A10017A98E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87CD5277270D806C00377214 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,8 +68,9 @@
 		876CF06F270D71A10017A98E /* DNSR */ = {
 			isa = PBXGroup;
 			children = (
-				876CF070270D71A10017A98E /* DNSRApp.swift */,
-				876CF072270D71A10017A98E /* ContentView.swift */,
+				876CF070270D71A10017A98E /* App.swift */,
+				876CF072270D71A10017A98E /* View.swift */,
+				87CD5277270D806C00377214 /* State.swift */,
 				876CF074270D71A10017A98E /* Assets.xcassets */,
 				876CF079270D71A10017A98E /* Info.plist */,
 				876CF076270D71A10017A98E /* Preview Content */,
@@ -200,8 +203,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				876CF073270D71A10017A98E /* ContentView.swift in Sources */,
-				876CF071270D71A10017A98E /* DNSRApp.swift in Sources */,
+				876CF073270D71A10017A98E /* View.swift in Sources */,
+				876CF071270D71A10017A98E /* App.swift in Sources */,
+				87CD5278270D806C00377214 /* State.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +267,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_ASSET_PATHS = "\"DNSR/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -338,6 +343,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"DNSR/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
