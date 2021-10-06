@@ -6,25 +6,31 @@
 //
 import SwiftUI
 import BackgroundTasks
+import Combine
 @main
 struct App: SwiftUI.App {
 	let state = State()
+	let queue = DispatchQueue.global(qos: .background)
 	let view: some SwiftUI.View = View()
+	var sink = Set<AnyCancellable>()
 	var body: some Scene {
 		WindowGroup {
 			view.environmentObject(state)
 		}
 	}
 	init() {
-		let scheduler: BGTaskScheduler = .shared
-		let result = Bundle.main.bundleIdentifier.map {
-			scheduler.register(forTaskWithIdentifier: $0, using: .none, launchHandler: `do`)
-		}
-		assert(result == true)
-	}
-}
-extension App {
-	func `do`(tasl: BGTask) {
-		print("ok")
+		let state = state
+		request(host: state.getHost(),
+				user: state.getUser(),
+				pass: state.getPass()).sink(receiveCompletion: {
+					switch $0 {
+						case.finished:
+							break
+						case.failure(let error):
+							break
+					}
+				}, receiveValue: {
+					state.set(status: $0)
+				}).store(in: &sink)
 	}
 }
