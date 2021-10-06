@@ -19,18 +19,6 @@ struct App: SwiftUI.App {
 		}
 	}
 	init() {
-		let state = state
-		request(host: state.getHost(),
-				user: state.getUser(),
-				pass: state.getPass()).sink(receiveCompletion: {
-					switch $0 {
-						case.finished:
-							break
-						case.failure(let error):
-							break
-					}
-				}, receiveValue: {
-					state.set(status: $0)
-				}).store(in: &sink)
+		setup()
 	}
 }
