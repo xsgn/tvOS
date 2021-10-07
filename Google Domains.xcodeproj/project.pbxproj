@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		873EB769270EDC390020771D /* AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873EB768270EDC390020771D /* AppTests.swift */; };
 		876CF071270D71A10017A98E /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876CF070270D71A10017A98E /* App.swift */; };
 		876CF073270D71A10017A98E /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876CF072270D71A10017A98E /* View.swift */; };
 		876CF075270D71A10017A98E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 876CF074270D71A10017A98E /* Assets.xcassets */; };
 		876CF078270D71A10017A98E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 876CF077270D71A10017A98E /* Preview Assets.xcassets */; };
-		876CF083270D71A10017A98E /* DNSRTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876CF082270D71A10017A98E /* DNSRTests.swift */; };
 		87CD5278270D806C00377214 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD5277270D806C00377214 /* State.swift */; };
 		87CD527A270DA0E100377214 /* App+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD5279270DA0E100377214 /* App+Request.swift */; };
 		87CD528F270DB5EA00377214 /* App+Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD528E270DB5EA00377214 /* App+Schedule.swift */; };
@@ -28,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		873EB768270EDC390020771D /* AppTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTests.swift; sourceTree = "<group>"; };
 		876CF06D270D71A10017A98E /* DNSR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DNSR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		876CF070270D71A10017A98E /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		876CF072270D71A10017A98E /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -35,7 +36,6 @@
 		876CF077270D71A10017A98E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		876CF079270D71A10017A98E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		876CF07E270D71A10017A98E /* DNSRTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DNSRTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		876CF082270D71A10017A98E /* DNSRTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSRTests.swift; sourceTree = "<group>"; };
 		876CF084270D71A10017A98E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87CD5277270D806C00377214 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		87CD5279270DA0E100377214 /* App+Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App+Request.swift"; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 		876CF081270D71A10017A98E /* DNSRTests */ = {
 			isa = PBXGroup;
 			children = (
-				876CF082270D71A10017A98E /* DNSRTests.swift */,
+				873EB768270EDC390020771D /* AppTests.swift */,
 				876CF084270D71A10017A98E /* Info.plist */,
 			);
 			path = DNSRTests;
@@ -221,7 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				876CF083270D71A10017A98E /* DNSRTests.swift in Sources */,
+				873EB769270EDC390020771D /* AppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
