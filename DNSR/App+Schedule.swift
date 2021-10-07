@@ -51,7 +51,7 @@ extension App {
 	}
 }
 extension App {
-	func `catch`(error: Swift.Error) {
+	func `catch`(error: Error) {
 		state.set(status: "FAILURE: \(Date()), \(error)")
 	}
 }
