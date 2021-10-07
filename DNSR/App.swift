@@ -20,5 +20,6 @@ struct App: SwiftUI.App {
 	}
 	init() {
 		setup()
+		entry()
 	}
 }

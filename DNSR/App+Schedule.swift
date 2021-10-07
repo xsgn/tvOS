@@ -12,7 +12,7 @@ extension App {
 				switch $0 {
 					case let task as BGProcessingTask:
 						defer {
-							schedule()
+							entry()
 						}
 						request(host: state.getHost(), user: state.getUser(), pass: state.getPass()).sink(receiveCompletion: {
 							switch $0 {
@@ -33,10 +33,11 @@ extension App {
 		}
 		assert(result == true)
 	}
-	func schedule() {
+	func entry() {
 		Bundle.main.bundleIdentifier.map(BGProcessingTaskRequest.init).map {
 			$0.requiresExternalPower = true
 			$0.requiresNetworkConnectivity = true
+			$0.earliestBeginDate = .init(timeIntervalSinceNow: 60 * 60)
 			do {
 				try BGTaskScheduler.shared.submit($0)
 			} catch {
