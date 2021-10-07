@@ -6,32 +6,36 @@
 //
 import BackgroundTasks
 extension App {
-	func setup() {
-		let result = Bundle.main.bundleIdentifier.map {
-			BGTaskScheduler.shared.register(forTaskWithIdentifier: $0, using: .global(qos: .background)) {
-				switch $0 {
-					case let task as BGProcessingTask:
-						defer {
-							entry()
+	func setup(identifier: String) -> Bool {
+		BGTaskScheduler.shared.register(forTaskWithIdentifier: identifier, using: .global(qos: .background)) {
+			switch $0 {
+				case let task as BGProcessingTask:
+					defer {
+						entry()
+					}
+					request(host: state.getHost(), user: state.getUser(), pass: state.getPass()).sink(receiveCompletion: {
+						switch $0 {
+							case.finished:
+								task.setTaskCompleted(success: true)
+							case.failure(let error):
+								`catch`(error: error)
 						}
-						request(host: state.getHost(), user: state.getUser(), pass: state.getPass()).sink(receiveCompletion: {
-							switch $0 {
-								case.finished:
-									task.setTaskCompleted(success: true)
-								case.failure(let error):
-									print(error)
-									break
-							}
-							
-						}, receiveValue: {
-							state.set(status: "LAST UPDATE: \(Date()), \($0)")
-						}).store(in: &type(of: self).cancel)
-					default:
-						break
-				}
+						
+					}, receiveValue: {
+						state.set(status: "UPDATED: \(Date()), \($0)")
+					}).store(in: &type(of: self).cancel)
+				default:
+					break
 			}
 		}
-		assert(result == true)
+	}
+	func setup() {
+		switch Bundle.main.bundleIdentifier.map(setup) {
+			case.some(true):
+				break
+			case.some(false),.none:
+				break
+		}
 	}
 	func entry() {
 		Bundle.main.bundleIdentifier.map(BGProcessingTaskRequest.init).map {
@@ -41,8 +45,13 @@ extension App {
 			do {
 				try BGTaskScheduler.shared.submit($0)
 			} catch {
-				
+				`catch`(error: error)
 			}
 		}
+	}
+}
+extension App {
+	func `catch`(error: Swift.Error) {
+		state.set(status: "FAILURE: \(Date()), \(error)")
 	}
 }

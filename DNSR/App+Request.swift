@@ -7,29 +7,19 @@
 import Foundation
 import Combine
 extension App {
-	static var cancel: Set<AnyCancellable> = .init()
-	func update() {
-		request(host: state.getHost(), user: state.getUser(), pass: state.getPass()).sink(receiveCompletion: {
-			switch $0 {
-				case.finished:
-					break
-				case.failure(let error):
-					break
-			}
-		}, receiveValue: {
-			state.set(status: "LAST UPDATE: \(Date()), \($0)")
-		}).store(in: &type(of: self).cancel)
-	}
-}
-extension App {
 	func request(host: String, user: String, pass: String) -> AnyPublisher<String, URLSession.DataTaskPublisher.Failure> {
-		func parse(data: Data, response: URLResponse) -> Optional<String>.Publisher {
-			switch response {
+		func parse(data: Data, response urlresponse: URLResponse) -> AnyPublisher<Data, URLError> {
+			switch urlresponse {
 				case let response as HTTPURLResponse where (200..<300).contains(response.statusCode):
-					return String(data: data, encoding: .utf8).publisher
+					return Just(data).setFailureType(to: URLError.self).eraseToAnyPublisher()
+				case let response as HTTPURLResponse:
+					return Fail<Data, URLError>(error: .init(.init(rawValue: response.statusCode))).eraseToAnyPublisher()
 				default:
-					return.init(.none)
+					return Fail<Data, URLError>(error: .init(URLError.unknown)).eraseToAnyPublisher()
 			}
+		}
+		func encode(data: Data) -> Optional<String>.Publisher {
+			String(data: data, encoding: .utf8).publisher
 		}
 		func compose(address: String) -> Optional<URL>.Publisher {
 			var components = URLComponents()
@@ -48,9 +38,14 @@ extension App {
 		return URL(string: "https://domains.google.com/checkip").publisher
 			.flatMap(session.dataTaskPublisher)
 			.flatMap(parse)
+			.flatMap(encode)
 			.flatMap(compose)
 			.flatMap(session.dataTaskPublisher)
 			.flatMap(parse)
+			.flatMap(encode)
 			.eraseToAnyPublisher()
 	}
+}
+extension App {
+	static var cancel: Set<AnyCancellable> = .init()
 }
