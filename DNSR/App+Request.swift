@@ -18,9 +18,6 @@ extension App {
 					return Fail<Data, URLError>(error: .init(URLError.unknown)).eraseToAnyPublisher()
 			}
 		}
-		func encode(data: Data) -> Optional<String> {
-			String(data: data, encoding: .utf8)
-		}
 		func compose(address: String) -> Optional<URL> {
 			var components = URLComponents()
 			components.scheme = "https"
@@ -38,14 +35,19 @@ extension App {
 		return URL(string: "https://domains.google.com/checkip").publisher
 			.flatMap(session.dataTaskPublisher)
 			.flatMap(parse)
-			.compactMap(encode)
+			.compactMap(String.init)
 			.compactMap(compose)
 			.flatMap(session.dataTaskPublisher)
 			.flatMap(parse)
-			.compactMap(encode)
+			.compactMap(String.init)
 			.eraseToAnyPublisher()
 	}
 }
 extension App {
 	static var cancel: Set<AnyCancellable> = .init()
+}
+extension String {
+	init?(data: Data) {
+		self.init(data: data, encoding: .utf8)
+	}
 }
