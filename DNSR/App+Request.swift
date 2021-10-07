@@ -35,7 +35,8 @@ extension App {
 			return components.url
 		}
 		let session: URLSession = .shared
-		return URL(string: "https://domains.google.com/checkip").publisher
+		return Just("https://domains.google.com/checkip")
+			.compactMap(URL.init)
 			.flatMap(session.dataTaskPublisher)
 			.flatMap(parse)
 			.compactMap(encode)
