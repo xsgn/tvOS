@@ -18,10 +18,10 @@ extension App {
 					return Fail<Data, URLError>(error: .init(URLError.unknown)).eraseToAnyPublisher()
 			}
 		}
-		func encode(data: Data) -> Optional<String>.Publisher {
-			String(data: data, encoding: .utf8).publisher
+		func encode(data: Data) -> Optional<String> {
+			String(data: data, encoding: .utf8)
 		}
-		func compose(address: String) -> Optional<URL>.Publisher {
+		func compose(address: String) -> Optional<URL> {
 			var components = URLComponents()
 			components.scheme = "https"
 			components.host = "domains.google.com"
@@ -32,17 +32,17 @@ extension App {
 				URLQueryItem(name: "hostname", value: host),
 				URLQueryItem(name: "myip", value: address),
 			]
-			return components.url.publisher
+			return components.url
 		}
 		let session: URLSession = .shared
 		return URL(string: "https://domains.google.com/checkip").publisher
 			.flatMap(session.dataTaskPublisher)
 			.flatMap(parse)
-			.flatMap(encode)
-			.flatMap(compose)
+			.compactMap(encode)
+			.compactMap(compose)
 			.flatMap(session.dataTaskPublisher)
 			.flatMap(parse)
-			.flatMap(encode)
+			.compactMap(encode)
 			.eraseToAnyPublisher()
 	}
 }
