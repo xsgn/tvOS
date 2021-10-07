@@ -9,9 +9,9 @@ struct View: SwiftUI.View {
 	@EnvironmentObject var state: State
 	var body: some SwiftUI.View {
 		VStack {
-			TextField("HOST", text: state.host)
-			TextField("USER", text: state.user)
-			SecureField("PASS", text: state.pass)
+			TextField("HOSTNAME", text: state.host)
+			TextField("USERNAME", text: state.user)
+			SecureField("PASSWORD", text: state.pass)
 			Text(state.getStatus())
 		}.padding()
 	}
