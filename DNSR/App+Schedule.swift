@@ -32,9 +32,9 @@ extension App {
 	func setup() {
 		switch Bundle.main.bundleIdentifier.map(setup) {
 			case.some(true):
-				break
+				state.set(status: "Initialize: SUCCESS")
 			case.some(false),.none:
-				break
+				state.set(status: "Initialize: FAILURE")
 		}
 	}
 	func entry() {
